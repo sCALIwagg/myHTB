@@ -9,3 +9,4 @@ echo "Hello, friend!"
 echo "What distro are you using? (more will be added later)"
 read -p "1=Ubuntu, 2=Debian: (int pls)" distro
 
+echo $distro
