@@ -1,0 +1,1 @@
+I should create a script that automatically adds the pentesting repos to the sources list for Deb based machines .
