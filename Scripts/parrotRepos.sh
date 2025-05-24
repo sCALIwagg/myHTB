@@ -15,7 +15,7 @@ then
     echo "What distro are you using? (more will be added later)"
     read -p "1=Ubuntu/Debian, 2=Rocky/Fedora: (int pls)" distro
 
-    if [[ $distro -z || $distro -eq 0 ]]
+    if [ -z $distro ] || [ $distro -eq 0 ]
     then
         echo "Please enter an integer"
         exit 1
@@ -23,13 +23,21 @@ then
     then
         echo "Changes will be made to your /etc/apt/sources.list file."
 
-        if [[ -e "etc/apt/sources.list" ]]; then
-            echo "Adding Parrot repos to your sources list at /etc/apt/sources.list"
-            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
-            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list
+        if [[ -e "/etc/apt/sources.list.d/parrot.list" ]]; then
+            echo "Adding Parrot repos to your sources list at /etc/apt/sources.list.d/parrot.list"
+            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "Parrot repos added successfully!"
+        elif [[ -d "/etc/apt/sources.list.d" ]]; then
+            echo "Creating parrot.list in /etc/apt/sources.list.d"
+            sudo touch /etc/apt/sources.list.d/parrot.list
+            echo "Adding Parrot repos to your sources list at /etc/apt/sources.list.d/parrot.list"
+            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
             echo "Parrot repos added successfully!"
         else
-            echo "Could not find /etc/apt/sources.list. Please check your system."
+            echo "Could not find /etc/apt/sources.list.d; Please check your system."
+            exit 1
         fi
 
     elif [ $distro -eq 2 ]
@@ -41,7 +49,7 @@ then
             echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
             echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
             echo "Parrot repos added successfully!"
-        elif [[ -e "/etc/yum.repos.d" ]]; then
+        elif [[ -d "/etc/yum.repos.d" ]]; then
             echo "Creating parrot.repo in /etc/yum.repos.d"
             sudo touch /etc/yum.repos.d/parrot.repo
             echo "Adding Parrot repos to your sources list at /etc/yum.repos.d/parrot.repo"
