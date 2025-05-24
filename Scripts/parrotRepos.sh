@@ -25,15 +25,15 @@ then
 
         if [[ -e "/etc/apt/sources.list.d/parrot.list" ]]; then
             echo "Adding Parrot repos to your sources list at /etc/apt/sources.list.d/parrot.list"
-            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
-            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb https://deb.parrot.sh/parrot/ rolling main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb https://deb.parrot.sh/parrot/ rolling-security main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
             echo "Parrot repos added successfully!"
         elif [[ -d "/etc/apt/sources.list.d" ]]; then
             echo "Creating parrot.list in /etc/apt/sources.list.d"
             sudo touch /etc/apt/sources.list.d/parrot.list
             echo "Adding Parrot repos to your sources list at /etc/apt/sources.list.d/parrot.list"
-            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
-            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb https://deb.parrot.sh/parrot/ rolling main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
+            echo "deb https://deb.parrot.sh/parrot/ rolling-security main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/parrot.list
             echo "Parrot repos added successfully!"
         else
             echo "Could not find /etc/apt/sources.list.d; Please check your system."
@@ -46,15 +46,15 @@ then
 
         if [[ -e "etc/yum.repos.d/parrot.repo" ]]; then
             echo "Adding Parrot repos to your sources list at /etc/yum.repos.d/parrot.repo"
-            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
-            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
+            echo "deb https://deb.parrot.sh/parrot/ rolling main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
+            echo "deb https://deb.parrot.sh/parrot/ rolling-security main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
             echo "Parrot repos added successfully!"
         elif [[ -d "/etc/yum.repos.d" ]]; then
             echo "Creating parrot.repo in /etc/yum.repos.d"
             sudo touch /etc/yum.repos.d/parrot.repo
             echo "Adding Parrot repos to your sources list at /etc/yum.repos.d/parrot.repo"
-            echo "deb https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
-            echo "deb-src https://deb.parrotsec.org/parrot stable main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
+            echo "deb https://deb.parrot.sh/parrot/ rolling main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
+            echo "deb https://deb.parrot.sh/parrot/ rolling-security main contrib non-free" | sudo tee -a /etc/yum.repos.d/parrot.repo
             echo "Parrot repos added successfully!"
         else
             echo "Could not find /etc/apt/sources.list. Please check your system."
